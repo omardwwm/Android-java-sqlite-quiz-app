@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="launcherBackground">#29085C</color>
     <color name="quizBackGround">#2E2C2C</color>
+    <color name="backTintToggleBtnChecked">#C64A07</color>
+    <color name="backTintToggleBtnNotChecked">#E4B505</color>
 </resources>

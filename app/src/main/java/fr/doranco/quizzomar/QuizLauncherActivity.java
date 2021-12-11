@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class QuizLauncherActivity extends AppCompatActivity implements IConstants{
-    private static final String TAG = MainActivity.class.getSimpleName();
+    private static final String TAG = QuizLauncherActivity.class.getSimpleName();
     private SharedPreferences sharedPreferences;
 
     @Override
@@ -18,6 +18,7 @@ public class QuizLauncherActivity extends AppCompatActivity implements IConstant
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_launcher);
 
+        Utils util = new Utils();
         sharedPreferences = getSharedPreferences("currentUser",MODE_PRIVATE);
         String lastScore = String.valueOf(sharedPreferences.getInt(PREF_USER_SCORE,0));
 
@@ -46,21 +47,19 @@ public class QuizLauncherActivity extends AppCompatActivity implements IConstant
         buttonDeconnexionQuizLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clearPref(v);
-//                Utils util = new Utils();
-//                util.clearPref(v);
-//                Intent intent = new Intent(QuizLauncherActivity.this, MainActivity.class);
-//                startActivity(intent);
+                util.clearPref(sharedPreferences);
+                Intent intent = new Intent(QuizLauncherActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }
 
-    public void clearPref(View view){
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.clear();
-        editor.apply();
-
-        Intent intent = new Intent(QuizLauncherActivity.this, MainActivity.class);
-        startActivity(intent);
-    }
+//    public void clearPref(View view){
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        editor.clear();
+//        editor.apply();
+//
+//        Intent intent = new Intent(QuizLauncherActivity.this, MainActivity.class);
+//        startActivity(intent);
+//    }
 }

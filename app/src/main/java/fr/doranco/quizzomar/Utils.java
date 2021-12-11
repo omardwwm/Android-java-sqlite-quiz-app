@@ -11,17 +11,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.io.Serializable;
 
 public class Utils extends AppCompatActivity implements Serializable {
-    private SharedPreferences sharedPreferences;
 
     public Utils(){}
-    public void clearPref(View view){
-        sharedPreferences = getSharedPreferences("currentUser",MODE_PRIVATE);
+    public void clearPref(SharedPreferences sharedPreferences){
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
         editor.apply();
-
-//        Intent intent = new Intent(QuizLauncherActivity.this, MainActivity.class);
-//        startActivity(intent);
     }
 
 //    public boolean checkLoginExists(String loginToCheck){

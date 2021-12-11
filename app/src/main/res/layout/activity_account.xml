@@ -31,7 +31,7 @@
             android:id="@+id/textViewAccountSousTitre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="16dp"
             android:text="Mes Infos"
             android:textColor="#99BA06"
             android:textSize="24sp"
@@ -70,6 +70,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName"
+            android:enabled="false"
             android:textColor="#FFFFFF" />
     </LinearLayout>
 
@@ -105,6 +106,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName"
+            android:enabled="false"
             android:textColor="#FFFFFF" />
     </LinearLayout>
 
@@ -141,6 +143,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName"
+            android:enabled="false"
             android:textColor="#FFFFFF" />
     </LinearLayout>
 
@@ -177,6 +180,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName"
+            android:enabled="false"
             android:textColor="#FFFFFF" />
     </LinearLayout>
 
@@ -186,42 +190,69 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:backgroundTint="#F3D229"
         android:text="Aller Au QUIZ"
-        app:layout_constraintEnd_toEndOf="@id/linearLayout5"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/linearLayout5"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="@id/linearLayout6"
+        app:layout_constraintStart_toStartOf="@id/linearLayout6"
         app:layout_constraintTop_toBottomOf="@id/linearLayout6" />
 
     <Button
-        android:id="@+id/buttonUpdateInfoUser"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:text="Modifier mes Infos"
-        app:layout_constraintEnd_toEndOf="@id/buttonGoToQuiz"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/buttonGoToQuiz"
-        app:layout_constraintTop_toBottomOf="@id/buttonGoToQuiz" />
-
-    <Button
         android:id="@+id/buttonDeleteAccount"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         android:backgroundTint="#B12323"
         android:fallbackLineSpacing="false"
         android:hapticFeedbackEnabled="false"
         android:text="Supprimer mon compte ?"
-        app:layout_constraintEnd_toEndOf="@id/buttonUpdateInfoUser"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/buttonUpdateInfoUser"
-        app:layout_constraintTop_toBottomOf="@+id/buttonUpdateInfoUser" />
+        app:layout_constraintEnd_toEndOf="@id/linearLayout6"
+        app:layout_constraintStart_toStartOf="@id/linearLayout6"
+        app:layout_constraintTop_toBottomOf="@id/buttonLogOutAccountLayout" />
+
+    <Button
+        android:id="@+id/buttonLogOutAccountLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="#06BCBC"
+        android:text="Deconnexion"
+        app:layout_constraintEnd_toEndOf="@id/linearLayout6"
+        app:layout_constraintStart_toStartOf="@id/linearLayout6"
+        app:layout_constraintTop_toBottomOf="@id/buttonValidUpdate" />
+
+    <Button
+        android:id="@+id/buttonValidUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="#65BF09"
+        android:text="Valider modif"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@id/linearLayout6"
+        app:layout_constraintStart_toStartOf="@id/linearLayout6"
+        app:layout_constraintTop_toBottomOf="@id/toggleButtonUpdate" />
+
+    <ToggleButton
+        android:id="@+id/toggleButtonUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="#698F0D"
+        android:textColor="#FFFFFF"
+        android:textOff="Modifier mes infos"
+        android:textOn="Annuler la modif"
+        app:layout_constraintEnd_toEndOf="@id/linearLayout6"
+        app:layout_constraintStart_toStartOf="@id/linearLayout6"
+        app:layout_constraintTop_toBottomOf="@id/buttonGoToQuiz" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
