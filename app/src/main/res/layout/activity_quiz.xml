@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="16dp"
     android:background="@color/quizBackGround"
     android:padding="16dp"
     tools:context=".QuizActivity">
@@ -48,6 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/text_view_question"
+        android:layout_marginRight="24dp"
         android:layout_marginBottom="16dp"
         android:textAlignment="center"
         android:textColor="@android:color/holo_green_light" />
@@ -57,7 +59,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginTop="32dp">
+        android:layout_marginTop="48dp">
 
         <RadioButton
             android:id="@+id/radio_button1"
@@ -101,5 +103,14 @@
         android:backgroundTint="#B4E30B"
         android:text="Valider"
         android:textColor="#081B80" />
+
+    <TextView
+        android:id="@+id/textViewMyResponse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewCheckResponse"
+        android:layout_marginBottom="16dp"
+        android:drawablePadding="16dp"
+        android:text="TextViewtttttttttt" />
 
 </RelativeLayout>

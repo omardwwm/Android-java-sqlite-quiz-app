@@ -31,6 +31,7 @@ public class QuizActivity extends AppCompatActivity implements IConstants{
     private TextView text_view_question_count;
     private TextView textViewCheckResponse;
     private TextView text_view_countdown;
+    private TextView textViewMyResponse;
     private RadioGroup radio_group;
     private RadioButton radio_button1;
     private RadioButton radio_button2;
@@ -60,6 +61,7 @@ public class QuizActivity extends AppCompatActivity implements IConstants{
         text_view_question_count = findViewById(R.id.text_view_question_count);
         textViewCheckResponse = findViewById(R.id.textViewCheckResponse);
         text_view_countdown = findViewById(R.id.text_view_countdown);
+        textViewMyResponse = findViewById(R.id.textViewMyResponse);
         radio_group = findViewById(R.id.radio_group);
         radio_button1 = findViewById(R.id.radio_button1);
         radio_button2 = findViewById(R.id.radio_button2);
@@ -118,6 +120,8 @@ public class QuizActivity extends AppCompatActivity implements IConstants{
         radio_button2.setTextColor(textColorDefaultRadioButton);
         radio_button3.setTextColor(textColorDefaultRadioButton);
         radio_button4.setTextColor(textColorDefaultRadioButton);
+        textViewMyResponse.setText("");
+        textViewMyResponse.setCompoundDrawablesWithIntrinsicBounds( 0,0, 0,0);
 
         if (questionCounter < questionCountTotal){
             currentQuestion = questionsList.get(questionCounter);
@@ -142,11 +146,18 @@ public class QuizActivity extends AppCompatActivity implements IConstants{
         answered = true;
 
         RadioButton selectedRadioButton = findViewById(radio_group.getCheckedRadioButtonId());
-        int answerdIndex = radio_group.indexOfChild(selectedRadioButton)+1;
+        int answerdNumber = radio_group.indexOfChild(selectedRadioButton)+1;
 
-        if (answerdIndex == currentQuestion.getCorrectAnswerNb()){
+        if (answerdNumber == currentQuestion.getCorrectAnswerNb()){
             score++;
             text_view_score.setText("Score : " + score);
+            textViewMyResponse.setText("Bonne Reponse");
+            textViewMyResponse.setTextColor(Color.GREEN);
+            textViewMyResponse.setCompoundDrawablesWithIntrinsicBounds( 0,0, R.drawable.ic_round_check_circle_24,0);
+        } else {
+            textViewMyResponse.setText("Mauvaise Reponse");
+            textViewMyResponse.setTextColor(Color.RED);
+            textViewMyResponse.setCompoundDrawablesWithIntrinsicBounds( 0,0, R.drawable.ic_baseline_highlight_off_24,0);
         }
         showSolution();
     }

@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Precision 5110/AndroidStudioProjects/QuizzOmar/app/src/main/res/drawable/ic_baseline_highlight_off_24.xml" value="0.2708333333333333" />
+        <entry key="..\:/Users/Precision 5110/AndroidStudioProjects/QuizzOmar/app/src/main/res/drawable/ic_round_check_circle_24.xml" value="0.2708333333333333" />
         <entry key="..\:/Users/Precision 5110/AndroidStudioProjects/QuizzOmar/app/src/main/res/layout/activity_account.xml" value="0.2" />
         <entry key="..\:/Users/Precision 5110/AndroidStudioProjects/QuizzOmar/app/src/main/res/layout/activity_compte.xml" value="0.2546875" />
         <entry key="..\:/Users/Precision 5110/AndroidStudioProjects/QuizzOmar/app/src/main/res/layout/activity_login.xml" value="0.2546875" />

@@ -146,6 +146,7 @@ public class AccountActivity extends AppCompatActivity implements IConstants{
         String newFirstName = editTextDynamicPrenom.getText().toString().trim();
         String newLastName = editTextDynamicName.getText().toString().trim();
 //        String newPassword = editTextDynamicPassword.getText().toString().trim();
+//        A AJOUTER : LES VERIFICATIONS AVANT DE VALIDER L'UPDATE
 
         Uri uri = Uri.parse("content://fr.doranco.quizzomar.UserProvider/users");
         ContentValues values = new ContentValues();
