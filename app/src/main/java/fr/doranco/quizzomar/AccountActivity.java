@@ -1,10 +1,12 @@
 package fr.doranco.quizzomar;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
@@ -121,11 +123,33 @@ public class AccountActivity extends AppCompatActivity implements IConstants{
         buttonDeleteAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deleteAccount(v);
+//                deleteAccount();
+//                supprimerDialog();
+                AlertDialog.Builder builder = new AlertDialog.Builder(AccountActivity.this);
+                builder.setTitle("Supprimer Mon Compte");
+                builder.setMessage("Etes vous sur de vouloir supprimer votre compte ?")
+                        .setPositiveButton("OUI, SUPPRIMER", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                deleteAccount();
+                                util.clearPref(sharedPreferences);
+                                Intent intent = new Intent(AccountActivity.this, MainActivity.class);
+                                startActivity(intent);
+                            }
+                        });
+                builder.setNegativeButton("NON, ANNULER", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                AlertDialog alert = builder.create();
+                alert.show();
             }
         });
 
     }
+
 //Methode pour initialiser les champs pre-remplis de user infos
     public void backToOriginalfields(){
         buttonValidUpdate.setVisibility(View.GONE);
@@ -135,11 +159,14 @@ public class AccountActivity extends AppCompatActivity implements IConstants{
         editTextDynamicScore.setTextColor(Color.WHITE);
     }
 
-    public void deleteAccount(View view){
-//        Intent intent = new Intent(AccountActivity.this, MainActivity.class);
-//        startActivity(intent);
-//        delete user from database (using userprovider, getContentResolver().delete)
-        Toast.makeText(this,"LA SUPPRESSION EST EN COURS D'IMPLEMENTATION...", Toast.LENGTH_LONG).show();
+    public void deleteAccount(){
+        //        delete user from database (using userprovider, getContentResolver().delete)
+        Uri uri = Uri.parse("content://fr.doranco.quizzomar.UserProvider/users");
+        String where = MyDataBaseSQLite.KEY_LOGIN + "=?";
+        String currentUser = sharedPreferences.getString(PREF_USER_LOGIN, "");
+        String[] whereParam = {currentUser};
+        getContentResolver().delete(uri, where, whereParam);
+        Toast.makeText(this,"Votre Compte a ete supprime avec succes !", Toast.LENGTH_LONG).show();
     }
 
     public void validUpdatedUserInfos(){

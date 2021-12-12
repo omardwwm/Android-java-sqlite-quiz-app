@@ -25,7 +25,7 @@ public class CompteActivity extends AppCompatActivity {
 
     Button buttonValider, buttonRetourHome, buttonAfficherList;
     EditText editTextNom, editTextPrenom, editTextLogin, editTextPassword, editTextConfirmPassword;
-    ListView listViewUsers;
+//    ListView listViewUsers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +35,10 @@ public class CompteActivity extends AppCompatActivity {
         //        On Initialise les buttons
         buttonValider = findViewById(R.id.buttonValider);
         buttonRetourHome = findViewById(R.id.buttonRetourHome);
-        buttonAfficherList = findViewById(R.id.buttonAfficherList);
-        listViewUsers = findViewById(R.id.listView);
+//        Pour tester (listView et buttonAfficherList A RETIRER!!!!!!!!!!!!!!
+//        buttonAfficherList = findViewById(R.id.buttonAfficherList);
+//        listViewUsers = findViewById(R.id.listView);
+
 //        On initialise les EditText
         editTextNom = findViewById(R.id.editTextNom);
         editTextPrenom = findViewById(R.id.editTextPrenom);
@@ -60,13 +62,13 @@ public class CompteActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        buttonAfficherList.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                afficherUsers(view);
-            }
-        });
+//  Seuleemt en dev pour verifier l'ajout des users !!
+//        buttonAfficherList.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                afficherUsers(view);
+//            }
+//        });
     }
 
     public void validerInscription(View view) {
@@ -112,40 +114,37 @@ public class CompteActivity extends AppCompatActivity {
         Intent intent = new Intent(CompteActivity.this, LoginActivity.class);
         startActivity(intent);
     }
-    public void afficherUsers(View view){
-//        test=====================================
-//        String loginToCheck = editTextLogin.getText().toString().trim();
-        String loginToCheck = "logintoto";
-
-        Uri uri = Uri.parse("content://fr.doranco.quizzomar.UserProvider/users");
-//        String[] projection = {MyDataBaseSQLite.KEY_LASTNAME, MyDataBaseSQLite.KEY_FIRSTNAME};
-//        String where = MyDataBaseSQLite.KEY_LOGIN + "=?";
-//        String[] whereParam = {loginToCheck};
-        Cursor cursor = getContentResolver().query(uri, null, null, null, null);
-        List<User> listUsers = new ArrayList<User>();
-        if (cursor.moveToFirst()) {
-//            User user = new User();
-            while(!cursor.isAfterLast()) {
-                User user = new User();
-//                String nom = cursor.getString(cursor.getColumnIndexOrThrow(UserProvider.first_name));
-                user.setUserId(cursor.getInt(cursor.getColumnIndexOrThrow(MyDataBaseSQLite.KEY_ROWID)));
-                user.setFirstName(cursor.getString(cursor.getColumnIndexOrThrow(MyDataBaseSQLite.KEY_FIRSTNAME)));
-                user.setLastName(cursor.getString(cursor.getColumnIndexOrThrow(MyDataBaseSQLite.KEY_LASTNAME)));
-                user.setLogin(cursor.getString(cursor.getColumnIndexOrThrow(MyDataBaseSQLite.KEY_LOGIN)));
-//                user.setPassword(cursor.getString(cursor.getColumnIndexOrThrow(MyDataBaseSQLite.KEY_PASSWORD)));
-                user.setScore(cursor.getInt(cursor.getColumnIndexOrThrow(MyDataBaseSQLite.KEY_SCORE)));
-                listUsers.add(user);
-                cursor.moveToNext();
-            }
-        }
-//        else{
-////            User userTest = new User("test", "test", "testlogin", "test123");
-//            listUsers.add("userTest");
+//    Seuleemt en dev, retirer lors du deploiment!!!!!!!
+//    public void afficherUsers(View view){
+////        test=====================================
+////        String loginToCheck = editTextLogin.getText().toString().trim();
+////        String loginToCheck = "logintoto";
+//
+//        Uri uri = Uri.parse("content://fr.doranco.quizzomar.UserProvider/users");
+////        String[] projection = {MyDataBaseSQLite.KEY_LASTNAME, MyDataBaseSQLite.KEY_FIRSTNAME};
+////        String where = MyDataBaseSQLite.KEY_LOGIN + "=?";
+////        String[] whereParam = {loginToCheck};
+//        Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+//        List<User> listUsers = new ArrayList<User>();
+//        if (cursor.moveToFirst()) {
+////            User user = new User();
+//            while(!cursor.isAfterLast()) {
+//                User user = new User();
+////                String nom = cursor.getString(cursor.getColumnIndexOrThrow(UserProvider.first_name));
+//                user.setUserId(cursor.getInt(cursor.getColumnIndexOrThrow(MyDataBaseSQLite.KEY_ROWID)));
+//                user.setFirstName(cursor.getString(cursor.getColumnIndexOrThrow(MyDataBaseSQLite.KEY_FIRSTNAME)));
+//                user.setLastName(cursor.getString(cursor.getColumnIndexOrThrow(MyDataBaseSQLite.KEY_LASTNAME)));
+//                user.setLogin(cursor.getString(cursor.getColumnIndexOrThrow(MyDataBaseSQLite.KEY_LOGIN)));
+////                user.setPassword(cursor.getString(cursor.getColumnIndexOrThrow(MyDataBaseSQLite.KEY_PASSWORD)));
+//                user.setScore(cursor.getInt(cursor.getColumnIndexOrThrow(MyDataBaseSQLite.KEY_SCORE)));
+//                listUsers.add(user);
+//                cursor.moveToNext();
+//            }
 //        }
-        ArrayAdapter<User> arrayAdapter = new ArrayAdapter<User>(this, android.R.layout.simple_list_item_1, android.R.id.text1, listUsers);
-        listViewUsers.setAdapter(arrayAdapter);
-        arrayAdapter.notifyDataSetChanged();
-        if (cursor != null && !cursor.isClosed())
-            cursor.close();
-    }
+//        ArrayAdapter<User> arrayAdapter = new ArrayAdapter<User>(this, android.R.layout.simple_list_item_1, android.R.id.text1, listUsers);
+//        listViewUsers.setAdapter(arrayAdapter);
+//        arrayAdapter.notifyDataSetChanged();
+//        if (cursor != null && !cursor.isClosed())
+//            cursor.close();
+//    }
 }
