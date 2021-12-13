@@ -95,6 +95,7 @@ public class CompteActivity extends AppCompatActivity {
         }
         if (!password.equals(confirmPassword)) {
             Toast.makeText(this, "Les mots de passes et sa confirmation doivent etres identiques", Toast.LENGTH_LONG).show();
+            return;
         }
 //        CHECK IF THE LOGIN EXISTS IN DB BEFORE
         UserProvider userProvider = new UserProvider();
